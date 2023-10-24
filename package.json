@@ -1,0 +1,17 @@
+{
+  "name": "mi-primer-backend-63i",
+  "version": "1.0.0",
+  "description": "Este es mi primer backend con node",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "node --env-file=.env --watch src/index.js",
+    "build": "esbuild src/index.js --bundle --platform=node --outfile=dist/index.cjs --minify",
+    "start": "node --env-file=.env dist/index.cjs"
+  },
+  "keywords": [
+    "backend",
+    "rolling"
+  ],
+  "author": "Ezequiel Amin",
+  "license": "ISC"
+}
