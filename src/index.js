@@ -4,6 +4,9 @@ import cors from 'cors';
 
 import userRouter from './routes/userRoutes.js';
 
+// Conexion con la DB
+import './database/database.js';
+
 // 1. Iniciar la aplicación
 const app = express();
 
