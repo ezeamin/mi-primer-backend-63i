@@ -12,6 +12,7 @@ module.exports = {
     'no-underscore-dangle': 'off',
     'no-console': 'off',
     'no-unused-vars': 2,
+    'space-unary-ops': 'off',
   },
   ignorePatterns: ['**/node_modules/**', '**/dist/**'],
 };
