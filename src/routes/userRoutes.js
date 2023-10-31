@@ -17,6 +17,7 @@ router.get('/', getUsers);
 // POST
 router.post(
   '/',
+  // Utilizamos un callback para mandar el schema y hacerlo genérico a validateBody
   (req, res, next) => validateBody(req, res, next, post_userSchema),
   postUser,
 );
