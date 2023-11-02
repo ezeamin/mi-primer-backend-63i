@@ -3,6 +3,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 
 import userRouter from './routes/userRoutes.js';
+import authRouter from './routes/authRoutes.js';
 
 // Conexion con la DB
 import './database/database.js';
@@ -19,7 +20,8 @@ app.use(cors());
 app.use(express.json());
 
 // 4. Rutas
-app.use(userRouter);
+app.use('/api/v1/users', userRouter);
+app.use('/api/v1/auth', authRouter);
 
 // 5. Iniciar el loop del servidor
 app.listen(PORT, () => {
