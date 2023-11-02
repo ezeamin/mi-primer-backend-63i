@@ -66,10 +66,15 @@ export const putUser = async (req, res) => {
     params: { id },
   } = req;
 
+  if (body.password) {
+    const hashedPassword = bcrypt.hashSync(body.password, 10);
+    body.password = hashedPassword;
+  }
+
   try {
     const action = await UserModel.updateOne({ _id: id }, body);
 
-    if (action.modifiedCount === 0) {
+    if (action.matchedCount === 0) {
       res.status(400).json({
         data: null,
         message: 'No se encontró un usuario con ese id',
@@ -103,9 +108,12 @@ export const deleteUser = async (req, res) => {
   } = req;
 
   try {
-    const action = await UserModel.updateOne({ _id: id }, { isActive: false });
+    const action = await UserModel.updateOne(
+      { _id: id, isActive: true },
+      { isActive: false },
+    );
 
-    if (action.modifiedCount === 0) {
+    if (action.matchedCount === 0) {
       res.status(400).json({
         data: null,
         message: 'No se encontró un usuario con ese id',
