@@ -6,8 +6,10 @@ import {
   postUser,
   putUser,
 } from '../controllers/userController.js';
+
 import { validateBody } from '../middlewares/validateBody.js';
-import { post_userSchema } from '../helpers/validationSchemas/userSchemas.js';
+
+import { post_userSchema, put_userSchema } from '../helpers/validationSchemas/userSchemas.js';
 
 const router = express.Router();
 
@@ -23,7 +25,11 @@ router.post(
 );
 
 // PUT
-router.put('/:id', putUser);
+router.put(
+  '/:id',
+  (req, res, next) => validateBody(req, res, next, put_userSchema),
+  putUser,
+);
 
 // DELETE
 router.delete('/:id', deleteUser);
