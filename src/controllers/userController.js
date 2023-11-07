@@ -2,6 +2,10 @@ import bcrypt from 'bcryptjs';
 
 import UserModel from '../models/userSchema.js';
 
+// --------------------------------------------------------
+// GET
+// --------------------------------------------------------
+
 export const getUsers = async (_, res) => {
   try {
     const data = await UserModel.find();
@@ -22,6 +26,10 @@ export const getUsers = async (_, res) => {
     });
   }
 };
+
+// --------------------------------------------------------
+// POST
+// --------------------------------------------------------
 
 export const postUser = async (req, res) => {
   const { body } = req;
@@ -59,6 +67,10 @@ export const postUser = async (req, res) => {
     });
   }
 };
+
+// --------------------------------------------------------
+// PUT
+// --------------------------------------------------------
 
 export const putUser = async (req, res) => {
   const {
@@ -101,6 +113,10 @@ export const putUser = async (req, res) => {
     });
   }
 };
+
+// --------------------------------------------------------
+// DELETE
+// --------------------------------------------------------
 
 export const deleteUser = async (req, res) => {
   const {
