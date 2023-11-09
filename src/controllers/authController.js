@@ -25,9 +25,13 @@ export const postLogin = async (req, res) => {
     // Todo OK, continuar con la creación del token
 
     const userInfo = {
-      ...userInDB._doc,
-      password: undefined,
-      isActive: undefined,
+      user: {
+        id: userInDB._doc._id,
+        firstname: userInDB._doc.firstname,
+        lastname: userInDB._doc.lastname,
+        username: userInDB._doc.username,
+        isAdmin: userInDB._doc.isAdmin,
+      },
     };
 
     // (payload, secretKey, options)

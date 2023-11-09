@@ -7,8 +7,10 @@ export const getBlogs = async (_, res) => {
     const filteredData = data
       .filter((blog) => blog._doc.isActive === true)
       .map((blog) => ({
-        ...blog._doc,
-        isActive: undefined,
+        id: blog._doc._id,
+        'image-url': blog._doc.imageUrl,
+        title: blog._doc.title,
+        content: blog._doc.content,
       }));
 
     res.json({ data: filteredData, message: 'Blogs encontrados' });
