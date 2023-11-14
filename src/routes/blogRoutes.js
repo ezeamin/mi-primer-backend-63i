@@ -2,6 +2,7 @@ import express from 'express';
 
 import {
   deleteBlog,
+  getBlog,
   getBlogs,
   postBlog,
   putBlog,
@@ -21,6 +22,7 @@ const router = express.Router();
 
 // GET
 router.get('/', getBlogs);
+router.get('/:id', getBlog);
 
 // POST
 router.post(

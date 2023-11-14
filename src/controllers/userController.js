@@ -4,17 +4,15 @@ import UserModel from '../models/userSchema.js';
 
 export const getUsers = async (_, res) => {
   try {
-    const data = await UserModel.find();
+    const data = await UserModel.find({ isActive: true });
 
-    const filteredData = data
-      .filter((user) => user._doc.isActive === true)
-      .map((user) => ({
-        id: user._doc._id,
-        firstname: user._doc.firstname,
-        lastname: user._doc.lastname,
-        username: user._doc.username,
-        isAdmin: user._doc.isAdmin,
-      }));
+    const filteredData = data.map((user) => ({
+      id: user._doc._id,
+      firstname: user._doc.firstname,
+      lastname: user._doc.lastname,
+      username: user._doc.username,
+      isAdmin: user._doc.isAdmin,
+    }));
 
     res.json({ data: filteredData, message: 'Usuarios encontrados' });
   } catch (e) {
